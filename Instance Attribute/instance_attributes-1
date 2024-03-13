@@ -59,3 +59,85 @@ print(book2.__dict__)
 output:
 {'author': 'Dan Brown', 'title': 'Inferno'}
 {'author': 'Dan Brown', 'title': 'The Da Vinci Code', 'year_of_publishment': 2003}
+
+
+books = [book1,book2]
+print(books)
+
+############
+
+for book in books:
+    for attr in book.__dict__:
+        print(f'{attr} -> {getattr(book,attr)}')
+    print('-'*30)
+
+output:
+author -> Dan Brown
+title -> Inferno
+------------------------------
+author -> Dan Brown
+title -> The Da Vinci Code
+year_of_publishment -> 2003
+------------------------------
+
+# The Book class is defined. Implement a method called set_title() that allows you to set an instance attribute called title (without validation). 
+# Then create an instance of the Book class named book and set the title attribute to 'Inferno' using the set_title() method.
+
+#In response, print the value of the title attribute of the book instance
+
+class Book:
+    language = 'ENG'
+    is_ebook = True
+    
+    def set_title(self,value):
+        self.title = value
+        
+book = Book()
+book.set_title('Inferno')
+print(book.title)
+
+output:
+Inferno
+
+# The Book class is defined. Implement a method named set_title() that sets an instance attribute named title. 
+# Before setting the value, check if it's an object of str type, if not raise a TypeError with the following message:
+class Book:
+    language = 'ENG'
+    is_ebook = True
+    
+    def set_title(self,value):
+        if not isinstance(value,str):
+            raise TypeError('The value of the title attribute must be of str type.')
+            
+        self.title = value
+        
+book = Book()
+book.set_title('Inferno')
+print(book.title)
+
+output:
+Inferno
+
+# The Book class is defined. A method called set_title() was implemented that allows you to set an instance attribute 
+# called title. 
+# Create an instance of the Book class named book. Then, using the try ... except ... clause, 
+# try using the set_title() method to set the value of the title attribute to False. In case of a TypeError, 
+# print the error message to the console.
+
+class Book:
+    language = 'ENG'
+    is_ebook = True
+    
+    def set_title(self,value):
+        if not isinstance(value,str):
+            raise TypeError('The value of the title attribute must be of str type.')
+        self.title = value
+    
+book = Book()
+try:
+    book.set_title(False)
+except TypeError as error:
+    print(error)
+
+output:
+The value of the title attribute must be of str type.
