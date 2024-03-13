@@ -1,0 +1,163 @@
+# Implement a class called Laptop that sets the following instance attributes when creating an instance:
+# Then create an instance named laptop with the following attribute values:
+
+# brand = 'Acer'
+
+# model = 'Predator'
+
+# price = 5490
+# Use the special method __init__().
+# print the value of __dict__ attribute of laptop instance
+
+
+class Laptop:
+    def __init__(self,brand,model,price):
+        
+        self.brand = brand
+        self.model = model
+        self.price = price
+    
+laptop = Laptop('Acer','Predator',5490)
+print(laptop.__dict__)
+
+Output:
+{'brand': 'Acer', 'model': 'Predator', 'price': 5490}
+
+# A Class called Laptop was implemented
+# Implement a method in the Laptop class called Display_instance_attrs() that displays the name of all attributes of 
+# Laptop instance
+# Then create an instance named laptop with the given attribute values:
+
+# brand = 'Dell'
+
+# model = 'Inspiron'
+
+# price = 3699
+
+#In response, call display_instance_attrs() method on the laptop instance.
+
+class Laptop:
+    def __init__(self,brand,model,price):
+        self.brand = brand
+        self.model = model
+        self.price = price
+        
+    def display_instance_attr(self):
+        for attr in self.__dict__.keys():
+            print(attr)
+            
+laptop = Laptop('Dell','Inspiron',3699)
+laptop.display_instance_attr()
+
+####
+output:
+brand
+model
+price
+
+# Class Laptop is created 
+# create display_attr_with_values() method inside the class
+
+# display the names of all attribute of class with thier values
+
+class Laptop:
+    def __init__(self,brand,model,price):
+        self.brand = brand
+        self.model = model
+        self.price = price
+        
+    def display_attr_with_values(self):
+        for attr in self.__dict__.keys():
+            print(f'{attr} -> {getattr(self,attr)}')
+            
+#create the object of laptop class
+laptop = Laptop('Dell','Inspiron',3699)
+laptop.display_attr_with_values()
+
+Output:
+brand -> Dell
+model -> Inspiron
+price -> 3699
+
+# create the class Vector that takes any number of n-dimensional vector as argument when creating an instance
+# (without any validation) and assign to instance attribute named components
+
+class Vector:
+    def __init__(self, *components):
+        self.components = components
+        
+v1 = Vector(1,2)
+v2 = Vector(4,5,2)
+
+print(f'v1 -> {v1.components}')
+print(f'v2 -> {v2.components}')
+
+output:
+v1 -> (1, 2)
+v2 -> (4, 5, 2)
+
+# Implement a class called  "Car" that sets the following instance attributes when creating an instance:
+
+# brand,
+# model
+# price
+# type_of_car
+
+class Car:
+    def __init__(self,brand,model,price,type_of_car='sedan'):
+        self.brand = brand
+        self.model = model
+        self.price = price
+        self.type_of_car = type_of_car if type_of_car else 'sedan'
+        
+# create an instance names car with given values: 
+
+# brand = 'Opel'
+# model = "Insignia"
+# price = 115000
+
+car = Car('Opel','Insignia',115000)
+#print the value of __dict__ attribute of the car instance
+print(car.__dict__)
+
+{'brand': 'Opel', 'model': 'Insignia', 'price': 115000, 'type_of_car': 'sedan'}
+
+# # Implement a class called Laptop that sets the following instance attributes when creating an instance:
+
+ # 1. brand
+
+# 2.model
+
+# 3.price
+
+
+# When creating an instance, add validation for the price attribute. The value of the price attribute must be an int or float type 
+# greater than zero. 
+# If it is not, raise the TypeError with the following message:
+
+# 'The price attribute must be a positive int or float.'
+
+# create an instance called laptop with given attributes
+
+ # ** brand = 'Acer'
+ # ** model = 'Predator'
+ # ** price = 5490
+    
+# print the value of __dict__ attribute of the laptop instance
+
+class Laptop:
+    def __init__(self,brand,model,price):
+        self.brand = brand
+        self.model = model
+        if isinstance(price,(int,float)) and price>0:
+            self.price = price
+        else:
+            
+            raise TypeError('The price attribute must be a positive int or float.')
+# create instance of Laptop class
+laptop = Laptop('Acer','Predator',5490)
+print(laptop.__dict__)
+
+output:
+{'brand': 'Acer', 'model': 'Predator', 'price': 5490}
+
