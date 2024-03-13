@@ -1,0 +1,61 @@
+# Book Class is defined.
+# create the instance of Book class as book and display the value of the __dict__ attribute for book instance.
+# Then assign two attributes to the book instance
+# author to the value 'Dan Brown' and title to the value 'Inferno'
+# display the __dict__ attribute of book instance again
+
+class Book:
+    language = 'ENG'
+    is_ebook = True
+    
+    
+book = Book()
+print(book.__dict__)
+book.author = 'Dan Brown'
+book.title = 'Inferno'
+print(book.__dict__)
+
+output:
+{}
+{'author': 'Dan Brown', 'title': 'Inferno'}
+
+# The Book class is defined. Create two instances of the Book class named book_1 and book_2. 
+#Then assign instance attributes to these objects (using dot notation) as follows:
+
+# to object book_1:
+
+# author = 'Dan Brown'
+
+# title = 'Inferno'
+
+# to object book_2:
+
+# author = 'Dan Brown'
+
+# title = 'The Da Vinci Code'
+
+# year_of_publishment = 2003
+#In response, print the value of the __dict__ attribute of book_1 and book_2.
+
+class Book:
+    language = 'ENG'
+    is_ebook = True
+    
+#create two instance of Book class
+book1 = Book()
+book2 = Book()
+
+# assign the instance attribute
+book1.author = 'Dan Brown'
+book1.title = 'Inferno'
+
+book2.author = 'Dan Brown'
+book2.title = 'The Da Vinci Code'
+book2.year_of_publishment = 2003
+
+print(book1.__dict__)
+print(book2.__dict__)
+
+output:
+{'author': 'Dan Brown', 'title': 'Inferno'}
+{'author': 'Dan Brown', 'title': 'The Da Vinci Code', 'year_of_publishment': 2003}
