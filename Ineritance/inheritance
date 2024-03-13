@@ -1,0 +1,140 @@
+# The following classes are implemented:
+  # Container
+  # PlasticContainer
+  # MetalContainer
+  # CustomContainer
+
+# Using the issubclass() built-in function, check if the classes:
+  # PlasticContainer
+  # MetalContainer
+  # CustomContainer
+    
+# are subclasses of Container class. Print the result to the console as shown below
+
+# True
+# True
+# False
+
+class Container:
+    pass
+class PlasticContainer(Container):
+    pass
+class MetalContainer(Container):
+    pass
+class CustomContainer:
+    pass
+
+print(issubclass(PlasticContainer,Container))
+print(issubclass(MetalContainer,Container))
+print(issubclass(CustomContainer,Container))
+
+# The Following classes are implemented
+# Vehicle
+# LandVehicle
+# AirVehicle
+
+# Define __repr__() special method in the Vehicle class that returns a formal representation of the object of class Vehicle,
+# LandVehicle, and AirVehicle
+
+class Vehicle:
+    def __init__(self,category=None):
+        self.category = category if category else 'LandVehicle'
+        
+    def __repr__(self):
+        return f"{self.__class__.__name__}(category = '{self.category}')"
+    
+class LandVehicle(Vehicle):
+    pass
+class AirVehicle(Vehicle):
+    def __init__(self,category=None):
+        self.category = category if category else 'AirVehicle'
+    
+instances = [Vehicle(),LandVehicle(),AirVehicle()]
+
+for instance in instances:
+    print(instance)
+
+output:
+Vehicle(category = 'LandVehicle')
+LandVehicle(category = 'LandVehicle')
+AirVehicle(category = 'AirVehicle')
+
+# Show the result in formal way
+
+class Vehicle:
+    def __init__(self,category=None):
+        self.category = category if category else 'LandVehicle'
+    def __repr__(self):
+        return f"{self.__class__.__name__} -> {self.category}"
+    
+class LandVehicle(Vehicle):
+    pass
+class AirVehicle(Vehicle):
+    def __init__(self,category = None):
+        self.category = category if category else 'AirVehicle'
+        
+instances = [Vehicle(),LandVehicle(),AirVehicle()]
+
+for instance in instances:
+    print(instance)
+        
+Output:
+Vehicle -> LandVehicle
+LandVehicle -> LandVehicle
+AirVehicle -> AirVehicle
+
+# A Vehicle class is given that has three instance attributes :
+ # brand
+ # color
+ # year
+# Create a Car class that inherits from Vehicle class. Next,override the __init__() method so that the Car class in the constructor
+# takes four arguments:
+class Vehicle:
+    def __init__(self,brand,color,year):
+        self.brand = brand
+        self.color = color
+        self.year = year
+class Car(Vehicle):
+    def __init__(self,brand,color,year,horsepower):
+        self.brand = brand
+        self.color = color
+        self.year = year
+        self.horsepower = horsepower
+        
+vehicle = Vehicle('Tesla','red',2020)
+print(vehicle.__dict__)
+car = Car('Tesla','red',2020,300)
+print(car.__dict__)
+
+Output:
+{'brand': 'Tesla', 'color': 'red', 'year': 2020}
+{'brand': 'Tesla', 'color': 'red', 'year': 2020, 'horsepower': 300}
+
+
+# The Vehicle and Car classes are listed below. Implement a method named display_attrs() in the base class Vehicle,
+# which displays the instance attributes and their values.
+# Then create an instance of Car class named car with the attributes values : 'Opel','black',2018,160
+# In response,call display_attrs() on the car instance
+
+class Vehicle:
+    def __init__(self,brand,color,year):
+        self.brand = brand
+        self.color = color
+        self.year = year
+    def display_attrs(self):
+        for attr,value in self.__dict__.items():
+            print(f'{attr} -> {value}')
+            
+class Car(Vehicle):
+    def __init__(self,brand,color,year,horsepower):
+        super().__init__(brand,color,year)
+        self.horsepower = horsepower
+        
+car = Car('Opel','black',2018,160)
+car.display_attrs()
+
+Output:
+brand -> Opel
+color -> black
+year -> 2018
+horsepower -> 160
