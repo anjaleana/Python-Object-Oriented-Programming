@@ -1,0 +1,218 @@
+# Implement a class named Person that has two protected attributes: first_name and last_name, respectively. 
+# Next implement methods named get_first_name(), set_first_name(), get_last_name(), set_last_name(), 
+# which allows you to read and modify the value of the first_name and last_name protected attributes.
+
+# Then, using the methods get_first_name(), set_first_name(), get_last_name(), set_last_name() and the property class 
+# (do it in the standard way) create properties: first_name and last_name (properties to read and modify).
+
+# create an instance of the Person class with the following values:
+# first_name = 'John'
+# last_name = 'Dow'
+
+# Using the dot notation, modify the attribute values for this instance, respectively
+
+# First name to the value 'Tom'
+# last_name to the value 'Smith'
+
+# print the __dict__ attribute of the created instance to the console
+
+class Person:
+    def __init__(self,first_name,last_name):
+        self._first_name = first_name
+        self._last_name = last_name
+    def get_first_name(self):
+        return self._first_name
+    def get_last_name(self):
+        return self._last_name
+    def set_first_name(self,value):
+        self._first_name = value
+    def set_last_name(self,value):
+        self._last_name = value
+    first_name = property(fget = get_first_name,fset=set_first_name)
+    last_name = property(fget = get_last_name,fset=set_last_name)
+    
+        
+person = Person('John','Dow')
+print(person.first_name)
+print(person.last_name)
+
+person.first_name = 'Tom'
+person.last_name = 'Smith'
+
+print(person.__dict__)
+
+output:
+John
+Dow
+{'_first_name': 'Tom', '_last_name': 'Smith'}
+
+
+# use del_first_name to delete the first_name protected attribute
+
+# created Person class
+class Person:
+    def __init__(self,first_name):
+        self._first_name = first_name
+    # read the first name
+    def get_first_name(self):
+        return self._first_name
+    # modify the first name
+    def set_first_name(self,value):
+        self._first_name = value
+    def del_first_name(self):
+        del self._first_name
+        
+    first_name = property(fget = get_first_name,fset=set_first_name,fdel = del_first_name)
+    
+
+# Create an instance of the Person class named person and assign the value 'Tom' to first_name. 
+# Use the del_first_name() method to delete the first_name attribute of the person instance.
+# Display the __dict__ attribute of the person instance to the console.
+
+
+person = Person('John')
+person.del_first_name()
+print(person.__dict__)
+
+Output:
+{}
+
+# Implement a class named Pet that has one protected instance attribute name
+# Then implement a name() method which reads the value of the protected name attribute
+# create property name(read-only) using the @property decorator
+
+class Pet:
+    def __init__(self,name):
+        self._name = name
+    @property
+    def name(self,value):
+        self._name = value
+        
+# create instance of Pet class
+pet = Pet('Max')
+print(pet.__dict__)
+
+output:
+{'_name': 'Max'}
+
+# Implement a class named Pet that has two protected instance attribute : name and age respectively, Next Implement the methods: name() and age()
+# Which reads the value of the protected attributes name and age
+# using @property decorator, create properties name and age respectively
+
+# Create an instance of Pet class named pet and set the name attribute 'Max' and age to 5.
+
+# In response.Print the contents of the __dict__ attribute of pet instance to the console
+
+class Pet:
+    def __init__(self,name,age):
+        self._name = name
+        self._age = age
+    @property
+    def name(self,value):
+        self._name = value
+    @property
+    def age(self,value):
+        self._age = value
+        
+pet = Pet('Max',5)
+print(pet.__dict__)
+
+Output:
+{'_name': 'Max', '_age': 5}
+
+# Implement a class named Pet that has one protected instance attribute name.
+# Then using the @property decorator , to create a property name(property to read and modify without validation)
+# Create an instance of the Pet class named and set the name attribute to 'Max'
+# Then, using dot notation, to modify the value of name attribute to 'Oscar'
+# Print the contents of the __dict__ attribute of this instance to the console
+
+class Pet:
+    def __init__(self,name):
+        self._name = name
+    @property
+    def name(self):
+        return self._name
+    @name.setter
+    def name(self,value):
+        self._name = value
+
+pet = Pet('Max')
+#using dot notation modify the value of name attribute
+pet._name = 'Oscar'
+
+# display the contents of __dict__ attribute of this instance to the console
+print(pet.__dict__)
+
+Output:
+{'_name': 'Oscar'}
+
+
+# Implement a class named Pet that has two protected instance attribute : name and age 
+# Then using @ property decorator create properties : name and age respectively(Properties to read and modify,without validation)
+# Create an instance of the Pet class with the name pet and attributes
+# 1.name = 'Max'
+# 2. age = 5
+# print __dict__ attribute of the pet instance to the console.Then modify the attribute using dot notation
+# name to value 'Tom'
+# age to value 8
+class Pet:
+    def __init__(self,name,age):
+        self._name = name
+        self._age = age
+    @property
+    def name(self):
+        return self._name
+    @name.setter
+    def name(self,value):
+        self._name = value
+    @property
+    def age(self):
+        return self._age
+    @age.setter
+    def age(self,value):
+        self._age = value
+        
+pet = Pet('Max',5)
+print(pet.__dict__)
+
+pet._name = 'Tom'
+pet._age =8
+print(pet.__dict__)
+
+Output:
+{'_name': 'Max', '_age': 5}
+{'_name': 'Tom', '_age': 8}
+
+# Implement a class named TechStack that has one protected instance attribute named tech_names. Then using @property decorator
+# create property named tech_names(read,modify and delete property without validation)
+
+class TechStack:
+    def __init__(self,tech_names):
+        self._tech_names = tech_names
+    @property
+    def tech_names(self):
+        return self._tech_names
+    @tech_names.setter
+    def tech_names(self,value):
+        self._tech_names = value
+    @tech_names.deleter
+    def tech_names(self):
+        del self._tech_names
+    
+# read
+techstack = TechStack('python,java,sql')
+print(techstack.tech_names)
+
+#modify
+techstack.tech_names = 'python,sql'
+print(techstack.tech_names)
+
+# delete thr tech_names
+del techstack.tech_names
+print(techstack.__dict__)
+
+Output:
+python,java,sql
+python,sql
+{}
+        
