@@ -1,0 +1,30 @@
+# Create the Phone class
+# Define the attribute inside the class is known as class attribute
+# To print the value of class attribute , we use getattr()
+
+class Phone:
+    # class attribute and set thier value
+    brand = "Apple"
+    model = 'iPhone X'
+    
+# create object of Phone class
+phone = Phone()
+print(getattr(phone,'brand'))
+print(getattr(phone,'model'))
+
+Output:
+Apple
+iPhone X
+
+## change the brand and model name.
+## print the new output
+phone.brand = 'Samsung'
+phone.model = 'Galaxy'
+
+print(getattr(phone,'brand'))
+print(getattr(phone,'model'))
+
+output:
+brand: Acer
+model: Predator
+
